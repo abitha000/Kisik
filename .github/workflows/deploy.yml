@@ -23,14 +23,19 @@ jobs:
         with:
           deno-version: v2.x
 
-      - name: Build step
-        run: "pip install requirements.txt"
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+
+      - name: Install step
+        run: "deno install"
 
       - name: Upload to Deno Deploy
         uses: denoland/deployctl@v1
         with:
-          project: "abitha000-kisik-77"
-          entrypoint: "https://deno.land/std@0.188.0/http/file_server.ts"
-          root: "Dockerfile"
+          project: "abitha000-kisik-41"
+          entrypoint: "--entrypoint"
+          root: "./"
           
           
